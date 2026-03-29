@@ -16,7 +16,7 @@ app.get("/api/health", (_, res) => {
 app.post("/api/create_preference", async (req, res) => {
   try {
     if (!ACCESS_TOKEN || ACCESS_TOKEN.includes("COLE_AQUI")) {
-      return res.status(500).json({ error: "Configure MP_ACCESS_TOKEN no arquivo .env" });
+      return res.status(500).json({ error: "Configure MP_ACCESS_TOKEN no ambiente do Render" });
     }
 
     const { items, externalReference } = req.body;
@@ -65,6 +65,6 @@ app.post("/api/create_preference", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Checkout server rodando em http://localhost:${PORT}`);
 });
